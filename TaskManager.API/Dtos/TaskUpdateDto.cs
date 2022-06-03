@@ -13,8 +13,9 @@ namespace TaskManager.API.Dtos
         [Required]
         private TimeSpan resolutionDuration;
         public TimeSpan ResolutionDuration { get { 
-                return Created - DateTimeOffset.Now; 
-            
+                if(Done)
+                    return Created - DateTimeOffset.Now;
+                return resolutionDuration;
             } 
             set {
                 resolutionDuration =
